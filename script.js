@@ -24,5 +24,19 @@ function CreateGrid(rows, columns){
 
 }
 
-
 CreateGrid();
+
+//Set hover effect
+function setHoverEffect(grid){
+    const divHover = document.querySelectorAll(".grid-columns")
+
+    for (let grid = 0; grid < divHover.length; grid++ ){
+        divHover[grid].addEventListener("mouseenter" , () =>{
+            divHover[grid].setAttribute("style", `background-color:grey`);
+        });
+    }
+    console.log(divHover)
+    console.log(grid)
+}
+
+setHoverEffect();

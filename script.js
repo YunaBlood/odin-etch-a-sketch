@@ -27,12 +27,28 @@ function setHoverEffect(grid){
 
     for (let grid = 0; grid < divHover.length; grid++ ){
         divHover[grid].addEventListener("mouseenter" , () =>{
-            divHover[grid].setAttribute("style", `background-color:grey`);
-        });
+            let color = randomRgbColor(); //call function
+            let rgbString = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+            divHover[grid].style.backgroundColor = rgbString;});
     }
 }
 
 setHoverEffect();
+
+function randomNumber(max){
+    return Math.floor(Math.random()*(max + 1));
+}
+// Outputs a number between 0 and 255
+console.log(randomNumber(255))
+
+
+
+function randomRgbColor(){
+    let red = randomNumber(255);
+    let green = randomNumber(255);
+    let blue = randomNumber(255);
+    return [red, green, blue];
+}
 
 function removeGrid(){
     let input = prompt("How many square do you want per side ? (max 100)" ,"1");
@@ -76,11 +92,15 @@ function removeGrid(){
     const squareHover = document.querySelectorAll(".grid-col")
 
     for (let grid = 0; grid < squareHover.length; grid++ ){
-        squareHover[grid].addEventListener("mouseenter" , () =>{
-            squareHover[grid].style.backgroundColor = "grey";
+        squareHover[grid].addEventListener("mouseenter" , () => {
+            let color = randomRgbColor(); //call function
+            let rgbString = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+            squareHover[grid].style.backgroundColor = rgbString;
         });
     }
 }
+
+
 
 //Reset button
 function buttonReset(){

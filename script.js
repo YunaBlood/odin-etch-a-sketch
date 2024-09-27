@@ -72,11 +72,20 @@ function removeGrid(){
 
         container.appendChild(rowsDiv);
     }
+
+    const squareHover = document.querySelectorAll(".grid-col")
+
+    for (let grid = 0; grid < squareHover.length; grid++ ){
+        squareHover[grid].addEventListener("mouseenter" , () =>{
+            squareHover[grid].style.backgroundColor = "grey";
+        });
+    }
 }
+
 //Reset button
 function buttonReset(){
     const buttonReset = document.querySelector("#reset-grid")
-    buttonReset.textContent = "Reset"
+    buttonReset.textContent = "Reset and ask for a new grid"
     buttonReset.addEventListener("click", () => removeGrid())
 }
 

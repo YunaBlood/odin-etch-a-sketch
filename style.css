@@ -1,0 +1,34 @@
+html{
+    box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before{
+    padding: 0;
+    margin: 0;
+}
+
+
+
+#grid-container{
+        display: flex;
+        flex-direction: column;
+        min-height: fit-content;
+        width: fit-content;
+        border: 5px solid black;
+        margin: 25px auto;
+
+}
+
+.grid-rows{
+    display: flex;
+}
+
+.grid-columns{
+    height: 50px;
+    width: 50px;
+    border: 1px solid black;
+}
+
+

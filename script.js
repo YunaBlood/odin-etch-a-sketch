@@ -17,7 +17,9 @@ function CreateGrid(rows, columns){
     }
 }
 
+
 CreateGrid();
+const containerRows = document.querySelector(".grid-rows");
 
 //Set hover effect
 function setHoverEffect(grid){
@@ -31,3 +33,51 @@ function setHoverEffect(grid){
 }
 
 setHoverEffect();
+
+function removeGrid(){
+    let input = prompt("How many square do you want per side ? (max 100)" ,"1");
+
+    if(input === null){
+        alert("User canceled")
+        return; //Exit the function
+    }
+
+    let SquareChoice = Number(input.trim()); //Convert input to a number and trim spaces
+
+    // Check if the input is NaN or out of range
+    if(isNaN(SquareChoice)|| SquareChoice > 100 || SquareChoice < 1){
+        alert("Choose a number between 1 and 100")
+        return removeGrid();
+    }
+
+    container.innerHTML = ""; //Remove all rows and column
+
+
+    let result = 960 / SquareChoice;
+    console.log(result);
+
+    for (let rows = 0; rows < SquareChoice; rows++) {
+        let rowsDiv = document.createElement("div")
+        rowsDiv.style.display = "flex"
+        rowsDiv.classList.add("grid-row")
+        for(let col = 0;col < SquareChoice;col++ ){
+            let square = document.createElement("div")
+            square.classList.add("grid-col")
+            square.style.border = `1px solid black`
+            square.style.width = `${result}px`;
+            square.style.height = `${result}px`;
+
+            rowsDiv.appendChild(square);
+        }
+
+        container.appendChild(rowsDiv);
+    }
+}
+//Reset button
+function buttonReset(){
+    const buttonReset = document.querySelector("#reset-grid")
+    buttonReset.textContent = "Reset"
+    buttonReset.addEventListener("click", () => removeGrid())
+}
+
+buttonReset();

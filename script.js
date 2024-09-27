@@ -39,8 +39,6 @@ function randomNumber(max){
     return Math.floor(Math.random()*(max + 1));
 }
 // Outputs a number between 0 and 255
-console.log(randomNumber(255))
-
 
 
 function randomRgbColor(){
@@ -68,9 +66,8 @@ function removeGrid(){
 
     container.innerHTML = ""; //Remove all rows and column
 
-
+    //960px / square choice for the size of the square
     let result = 960 / SquareChoice;
-    console.log(result);
 
     for (let rows = 0; rows < SquareChoice; rows++) {
         let rowsDiv = document.createElement("div")

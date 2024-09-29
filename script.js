@@ -22,18 +22,29 @@ CreateGrid();
 const containerRows = document.querySelector(".grid-rows");
 
 //Set hover effect
-function setHoverEffect(grid){
+function setHoverEffect(){
     const divHover = document.querySelectorAll(".grid-columns")
 
     for (let grid = 0; grid < divHover.length; grid++ ){
         divHover[grid].addEventListener("mouseenter" , () =>{
-            let color = randomRgbColor(); //call function
-            let rgbString = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
-            divHover[grid].style.backgroundColor = rgbString;});
+            divHover[grid].style.backgroundColor = "grey";});
     }
 }
 
 setHoverEffect();
+
+function randomColorDisplay(){
+    const squareHover = document.querySelectorAll(".grid-columns")
+
+    for (let grid = 0; grid < squareHover.length; grid++ ){
+        squareHover[grid].addEventListener("mouseenter" , () => {
+            let color = randomRgbColor(); //call function
+            let rgbString = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+            squareHover[grid].style.backgroundColor = rgbString;
+        });
+    }
+}
+
 
 function randomNumber(max){
     return Math.floor(Math.random()*(max + 1));
@@ -75,7 +86,7 @@ function removeGrid(){
         rowsDiv.classList.add("grid-row")
         for(let col = 0;col < SquareChoice;col++ ){
             let square = document.createElement("div")
-            square.classList.add("grid-col")
+            square.classList.add("grid-columns")
             square.style.border = `1px solid black`
             square.style.width = `${result}px`;
             square.style.height = `${result}px`;
@@ -85,25 +96,34 @@ function removeGrid(){
 
         container.appendChild(rowsDiv);
     }
-
-    const squareHover = document.querySelectorAll(".grid-col")
-
-    for (let grid = 0; grid < squareHover.length; grid++ ){
-        squareHover[grid].addEventListener("mouseenter" , () => {
-            let color = randomRgbColor(); //call function
-            let rgbString = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
-            squareHover[grid].style.backgroundColor = rgbString;
-        });
-    }
+    setHoverEffect();
 }
 
+
+//OneColorButton function
+
+function buttonOneColor(){
+    const buttonOneColor = document.querySelector("#default-color");
+    buttonOneColor.addEventListener("click", () => setHoverEffect());
+}
+
+buttonOneColor();
+
+//RandomColorButton function
+
+function buttonRandomColor(){
+    const buttonRandomColor = document.querySelector("#random-color");
+    buttonRandomColor.addEventListener("click", () => randomColorDisplay());
+}
+
+buttonRandomColor();
 
 
 //Reset button
 function buttonReset(){
-    const buttonReset = document.querySelector("#reset-grid")
-    buttonReset.textContent = "Reset and ask for a new grid"
-    buttonReset.addEventListener("click", () => removeGrid())
+    const buttonReset = document.querySelector("#reset-grid");
+    buttonReset.textContent = "Reset and ask for a new grid";
+    buttonReset.addEventListener("click", () => removeGrid());
 }
 
 buttonReset();

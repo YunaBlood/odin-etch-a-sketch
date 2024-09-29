@@ -49,6 +49,7 @@ h1{
     height: 60px;
     width: 60px;
     outline: 1px solid black;
+    transition: background-color 0.1s ease-in;
 }
 
 button{

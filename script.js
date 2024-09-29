@@ -87,10 +87,8 @@ function removeGrid(){
         for(let col = 0;col < SquareChoice;col++ ){
             let square = document.createElement("div")
             square.classList.add("grid-columns")
-            square.style.border = `1px solid black`
             square.style.width = `${result}px`;
             square.style.height = `${result}px`;
-
             rowsDiv.appendChild(square);
         }
 
